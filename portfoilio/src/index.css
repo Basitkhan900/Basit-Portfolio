@@ -1,10 +1,22 @@
 @import "tailwindcss";
+/* Premium font pairing: Syne (display/headings) + DM Sans (body) */
+@import url('https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,300&display=swap');
+
+:root {
+  --font-display: 'Syne', sans-serif;   /* headings, logos, bold titles */
+  --font-body:    'DM Sans', sans-serif; /* body, nav, buttons, UI text  */
+}
 
 /* Full width + default browser margin remove */
 html, body, #root {
   width: 100%;
   margin: 0;
   padding: 0;
+  font-family: var(--font-body);
+  font-optical-sizing: auto;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  letter-spacing: -0.01em;
 }
 * {
   box-sizing: border-box;
@@ -14,39 +26,104 @@ button {
   outline: none;
 }
 
+/* ── Scrollbar ──────────────────────────────────── */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: #0a0a0f; }
+::-webkit-scrollbar-thumb { background: #7c3aed; border-radius: 10px; }
+::-webkit-scrollbar-thumb:hover { background: #a855f7; }
 
+/* ── Animated border travel ──────────────────────── */
 @keyframes slideX {
-  0% {
-    transform: translateX(100%);
-  }
-  100% {
-    transform: translateX(-100%);
-  }
+  0%   { transform: translateX(100%); }
+  100% { transform: translateX(-100%); }
 }
-
 @keyframes slideXReverse {
-  0% {
-    transform: translateX(-100%);
-  }
-  100% {
-    transform: translateX(100%);
-  }
+  0%   { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
 }
-
 @keyframes slideY {
-  0% {
-    transform: translateY(100%);
-  }
-  100% {
-    transform: translateY(-100%);
-  }
+  0%   { transform: translateY(100%); }
+  100% { transform: translateY(-100%); }
+}
+@keyframes slideYReverse {
+  0%   { transform: translateY(-100%); }
+  100% { transform: translateY(100%); }
 }
 
-@keyframes slideYReverse {
-  0% {
-    transform: translateY(-100%);
-  }
-  100% {
-    transform: translateY(100%);
-  }
+/* ── Floating orbs ───────────────────────────────── */
+@keyframes float {
+  0%, 100% { transform: translateY(0px) scale(1); }
+  50%       { transform: translateY(-80px) scale(1.15); }
+}
+@keyframes floatReverse {
+  0%, 100% { transform: translateY(0px) scale(1); }
+  50%       { transform: translateY(80px) scale(1.15); }
+}
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+/* ── Shimmer ─────────────────────────────────────── */
+@keyframes shimmer {
+  0%   { background-position: -200% center; }
+  100% { background-position: 200% center; }
+}
+
+/* ── Pulse glow ──────────────────────────────────── */
+@keyframes pulseGlow {
+  0%, 100% { box-shadow: 0 0 20px rgba(139, 92, 246, 0.3); }
+  50%       { box-shadow: 0 0 50px rgba(139, 92, 246, 0.7), 0 0 80px rgba(168, 85, 247, 0.3); }
+}
+
+/* ── Typography utilities ────────────────────────── */
+/* Apply these classes to headings / display text     */
+.font-display  { font-family: var(--font-display); }
+.font-body     { font-family: var(--font-body); }
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-display);
+  letter-spacing: -0.03em;
+  line-height: 1.1;
+}
+
+p, span, a, li, input, textarea, button, label {
+  font-family: var(--font-body);
+}
+
+/* ── Gradient text ───────────────────────────────── */
+.gradient-text {
+  background: linear-gradient(135deg, #a855f7, #6366f1, #3b82f6);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ── Glass card ──────────────────────────────────── */
+.glass {
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+/* ── Orb decoration ──────────────────────────────── */
+.orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(80px);
+  pointer-events: none;
+  z-index: 0;
+}
+.orb-purple {
+  background: radial-gradient(circle, rgba(139, 92, 246, 0.4), transparent 70%);
+  animation: float 6s ease-in-out infinite;
+}
+.orb-indigo {
+  background: radial-gradient(circle, rgba(99, 102, 241, 0.35), transparent 70%);
+  animation: floatReverse 7s ease-in-out infinite;
+}
+.orb-blue {
+  background: radial-gradient(circle, rgba(59, 130, 246, 0.3), transparent 70%);
+  animation: float 8s ease-in-out infinite;
 }

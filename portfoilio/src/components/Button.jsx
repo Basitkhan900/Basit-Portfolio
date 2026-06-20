@@ -5,10 +5,10 @@ const Button = ({ title, onClick }) => {
     <button
       onClick={onClick}
       className="
-      relative overflow-hidden inline-flex items-center justify-center px-1 py-4 min-w-[124px] min-h-[50px] tracking-widest text-blue-100
+      relative overflow-hidden inline-flex items-center justify-center px-6 py-4 min-w-[124px] min-h-[50px] tracking-widest text-blue-100
 
       bg-gradient-to-tr from-[#0b1b3d] to-[#08142b]
-      shadow-xl
+      shadow-xl rounded-full
 
       transition-all duration-300 ease-in-out
       hover:shadow-blue-500/40
