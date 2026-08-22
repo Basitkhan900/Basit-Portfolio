@@ -20,9 +20,9 @@ const containerVariants = {
 
 const itemVariants = {
   hidden: { opacity: 0, y: 30 },
-  visible: { 
-    opacity: 1, 
-    y: 0, 
+  visible: {
+    opacity: 1,
+    y: 0,
     transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] } // Smooth spring-like ease
   },
 };
@@ -32,8 +32,8 @@ const Header = () => {
 
   const handleDownloadCV = () => {
     const link = document.createElement("a");
-    link.href = "/AbdulBasit.pdf";
-    link.download = "AbdulBasit.pdf";
+    link.href = "/My-MERN-CV.pdf";
+    link.download = "My-MERN-CV.pdf";
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
