@@ -6,7 +6,7 @@ import Button from "./Button";
 
 const stats = [
   { value: "10+", label: "Projects Done" },
-  { value: "1+", label: "Years Experience" },
+  { value: "2", label: "Years Experience" },
   { value: "5+", label: "Happy Clients" },
 ];
 
