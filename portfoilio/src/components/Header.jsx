@@ -1,7 +1,7 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { useNavigate } from "react-router-dom";
-import logo from "../assets/images/basit.jpeg";
+import logo from "../assets/images/Mypic.jfif";
 import { FaLinkedin, FaFacebook, FaGithub, FaInstagram } from "react-icons/fa";
 import Typedtext from "./Typedtext";
 import Button from "./Button";
@@ -32,8 +32,8 @@ const Header = () => {
 
   const handleDownloadCV = () => {
     const link = document.createElement("a");
-    link.href = "/My-MERN-CV.pdf";
-    link.download = "My-MERN-CV.pdf";
+    link.href = "/Basit-MERN-stack-CV.pdf";
+    link.download = "Basit-MERN-stack-CV.pdf";
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
@@ -122,7 +122,7 @@ const Header = () => {
 
         {/* Right — Photo */}
         <motion.div
-          className="flex-shrink-0"
+          className="flex-shrink-0 flex justify-center items-center w-full md:w-auto mt-10 md:mt-0"
           initial={{ opacity: 0, scale: 0.8, rotate: -5 }}
           whileInView={{ opacity: 1, scale: 1, rotate: 0 }}
           transition={{ duration: 1, ease: "easeOut" }}
@@ -136,7 +136,7 @@ const Header = () => {
               repeat: Infinity,
               ease: "easeInOut",
             }}
-            className="relative"
+            className="relative flex justify-center items-center"
           >
             {/* Glow ring */}
             <div
@@ -149,15 +149,20 @@ const Header = () => {
                 opacity: 0.8
               }}
             />
-            <img
-              src={logo}
-              className="relative w-[260px] h-[260px] md:w-[380px] md:h-[380px] rounded-full object-cover"
+            <div
+              className="relative w-[260px] h-[260px] md:w-[380px] md:h-[380px] rounded-full flex justify-center items-center p-3 md:p-5"
               style={{
-                border: "4px solid #06030f", // Match the background color to create a gap effect
+                border: "4px solid #06030f",
+                background: "rgba(139,92,246,0.05)",
                 boxShadow: "0 0 60px rgba(124,58,237,0.4), 0 0 120px rgba(99,102,241,0.2)",
               }}
-              alt="Abdul Basit"
-            />
+            >
+              <img
+                src={logo}
+                className="w-full h-full rounded-full object-cover object-center shadow-lg shadow-purple-900/50"
+                alt="Abdul Basit"
+              />
+            </div>
           </motion.div>
         </motion.div>
 

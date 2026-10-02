@@ -1,7 +1,7 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { useNavigate } from "react-router-dom";
-import logo from "../assets/images/basit.jpeg";
+import logo from "../assets/images/Mypic.jfif";
 import Button from "./Button";
 
 const stats = [
