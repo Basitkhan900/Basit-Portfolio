@@ -32,8 +32,8 @@ const Header = () => {
 
   const handleDownloadCV = () => {
     const link = document.createElement("a");
-    link.href = "/Basit-MERN-stack-CV.pdf";
-    link.download = "Basit-MERN-stack-CV.pdf";
+    link.href = "/Abdul_Basit_CV_Mernstack.pdf";
+    link.download = "Abdul_Basit_CV_Mernstack.pdf";
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
