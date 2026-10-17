@@ -48,7 +48,7 @@ const data = [
         image: portf,
         title: "My Personal Portfolio",
         disc: "Build in React & My Portfolio user can see About Me (Fully Responsive) ",
-        live: "http://abdulbasit-portfolio.duckdns.org/",
+        live: "https://my-portfolio-website-rust-pi.vercel.app/",
         co: "",
     },
 
