@@ -13,6 +13,8 @@ import idealbilar from '../assets/images/Idealbilar.png'
 import AptechMedia from '../assets/images/AptechMedia.png'
 import DentalClinic from '../assets/images/Dental.png'
 import Gcms from '../assets/images/Gcms.png'
+import pic from '../assets/images/Hadi-mart.png'
+
 
 const data = [
 
@@ -138,6 +140,14 @@ const data = [
         disc: "A modern and responsive college management and information website developed to provide students, parents, and faculty with easy access to important academic and institutional information. The website presents the college's programs, departments, admissions, faculty, events, and other educational resources through a clean and user-friendly interface.",
         live: "https://gcms-ghallanai.vercel.app/",
         co: "https://github.com/SabreenAfd/GCMS-Ghallanai.git",
+    },
+    {
+        id: 15,
+        image: pic,
+        title: "Hadi Mart E-Commerce website",
+        disc: "Hadi Mart is a modern e-commerce store built with Next.js, TypeScript and Tailwind CSS, backed by a Node.js, Express.js and MongoDB API. It includes an AI chatbot that helps customers find products and a powerful admin dashboard for managing products, orders and store content",
+        live: "https://hadi-mart.vercel.app/",
+        co: "https://github.com/Basitkhan900/hadi-mart.git",
     }
 
 ]
