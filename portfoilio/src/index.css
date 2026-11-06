@@ -1,12 +1,54 @@
 @import "tailwindcss";
 
-/* Premium font pairing: Syne (display/headings) + DM Sans (body) */
+@custom-variant dark (&:where(.dark, .dark *));
+
+/* Premium font pairing & Theme Design Tokens */
 :root {
   --font-display: 'Syne', sans-serif;   /* headings, logos, bold titles */
   --font-body:    'DM Sans', sans-serif; /* body, nav, buttons, UI text  */
+
+  /* Light Theme (Soothing, muted, modern Slate-Zinc palette — NEVER glaring white) */
+  --bg-body: #eef2f6;
+  --bg-surface: #ffffff;
+  --bg-surface-elevated: #ffffff;
+  --bg-subtle: #e2e8f0;
+  --text-primary: #0f172a;
+  --text-secondary: #334155;
+  --text-muted: #64748b;
+  --border-subtle: rgba(203, 213, 225, 0.8);
+  --border-card: rgba(148, 163, 184, 0.25);
+  --header-bg: rgba(238, 242, 246, 0.85);
+  --header-border: rgba(203, 213, 225, 0.8);
+  --mobile-nav-bg: rgba(238, 242, 246, 0.98);
+  --footer-bg: #e2e8f0;
+  --scrollbar-track: #e2e8f0;
+  --scrollbar-thumb: #a855f7;
+}
+
+.dark {
+  /* Dark Theme (Deep cyber neon) */
+  --bg-body: #06030f;
+  --bg-surface: #0c0a15;
+  --bg-surface-elevated: rgba(255, 255, 255, 0.03);
+  --bg-subtle: rgba(255, 255, 255, 0.05);
+  --text-primary: #ffffff;
+  --text-secondary: #cbd5e1;
+  --text-muted: #9ca3af;
+  --border-subtle: rgba(139, 92, 246, 0.2);
+  --border-card: rgba(139, 92, 246, 0.2);
+  --header-bg: rgba(6, 3, 15, 0.8);
+  --header-border: rgba(139, 92, 246, 0.18);
+  --mobile-nav-bg: rgba(6, 3, 15, 0.97);
+  --footer-bg: transparent;
+  --scrollbar-track: #0a0a0f;
+  --scrollbar-thumb: #7c3aed;
 }
 
 /* Full width + default browser margin remove */
+html {
+  color-scheme: light dark;
+}
+
 html, body, #root {
   width: 100%;
   margin: 0;
@@ -17,6 +59,32 @@ html, body, #root {
   -moz-osx-font-smoothing: grayscale;
   letter-spacing: -0.01em;
 }
+
+body {
+  background-color: var(--bg-body);
+  color: var(--text-primary);
+  min-height: 100vh;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Light mode soothing mesh background: warm, comfortable on the eyes, rich depth */
+html:not(.dark) body {
+  background-color: #eef2f6;
+  background-image:
+    radial-gradient(at 0% 0%, rgba(147, 51, 234, 0.08) 0px, transparent 40%),
+    radial-gradient(at 100% 0%, rgba(99, 102, 241, 0.08) 0px, transparent 40%),
+    radial-gradient(at 50% 40%, rgba(226, 232, 240, 0.4) 0px, transparent 80%),
+    radial-gradient(at 100% 100%, rgba(168, 85, 247, 0.06) 0px, transparent 40%),
+    radial-gradient(at 0% 100%, rgba(79, 70, 229, 0.06) 0px, transparent 40%);
+  background-attachment: fixed;
+}
+
+/* Dark mode ambient space glow */
+html.dark body {
+  background-color: #06030f;
+  background-image: radial-gradient(ellipse 80% 40% at 50% -10%, rgba(124, 58, 237, 0.15), transparent 70%);
+}
+
 * {
   box-sizing: border-box;
 }
@@ -27,9 +95,9 @@ button {
 
 /* ── Scrollbar ──────────────────────────────────── */
 ::-webkit-scrollbar { width: 6px; }
-::-webkit-scrollbar-track { background: #0a0a0f; }
-::-webkit-scrollbar-thumb { background: #7c3aed; border-radius: 10px; }
-::-webkit-scrollbar-thumb:hover { background: #a855f7; }
+::-webkit-scrollbar-track { background: var(--scrollbar-track); transition: background 0.3s ease; }
+::-webkit-scrollbar-thumb { background: var(--scrollbar-thumb); border-radius: 10px; }
+::-webkit-scrollbar-thumb:hover { background: #9333ea; }
 
 /* ── Animated border travel ──────────────────────── */
 @keyframes slideX {
@@ -52,11 +120,11 @@ button {
 /* ── Floating orbs ───────────────────────────────── */
 @keyframes float {
   0%, 100% { transform: translateY(0px) scale(1); }
-  50%       { transform: translateY(-80px) scale(1.15); }
+  50%       { transform: translateY(-60px) scale(1.1); }
 }
 @keyframes floatReverse {
   0%, 100% { transform: translateY(0px) scale(1); }
-  50%       { transform: translateY(80px) scale(1.15); }
+  50%       { transform: translateY(60px) scale(1.1); }
 }
 
 @keyframes spin {
@@ -77,7 +145,6 @@ button {
 }
 
 /* ── Typography utilities ────────────────────────── */
-/* Apply these classes to headings / display text     */
 .font-display  { font-family: var(--font-display); }
 .font-body     { font-family: var(--font-body); }
 
@@ -93,7 +160,13 @@ p, span, a, li, input, textarea, button, label {
 
 /* ── Gradient text ───────────────────────────────── */
 .gradient-text {
-  background: linear-gradient(135deg, #a855f7, #6366f1, #3b82f6);
+  background: linear-gradient(135deg, #7c3aed, #4f46e5, #2563eb);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.dark .gradient-text {
+  background: linear-gradient(135deg, #a855f7, #6366f1, #60a5fa);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -101,28 +174,51 @@ p, span, a, li, input, textarea, button, label {
 
 /* ── Glass card ──────────────────────────────────── */
 .glass {
-  background: rgba(255, 255, 255, 0.03);
+  background: var(--bg-surface-elevated);
   backdrop-filter: blur(20px);
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid var(--border-subtle);
 }
 
 /* ── Orb decoration ──────────────────────────────── */
 .orb {
   position: absolute;
   border-radius: 50%;
-  filter: blur(80px);
   pointer-events: none;
   z-index: 0;
+  transition: opacity 0.5s ease;
 }
+
+/* Light mode: delicate ambient hues on the soft slate background */
 .orb-purple {
-  background: radial-gradient(circle, rgba(139, 92, 246, 0.4), transparent 70%);
-  animation: float 6s ease-in-out infinite;
+  background: radial-gradient(circle, rgba(168, 85, 247, 0.12), rgba(243, 232, 255, 0.02) 60%, transparent 75%);
+  filter: blur(90px);
+  animation: float 8s ease-in-out infinite;
 }
 .orb-indigo {
-  background: radial-gradient(circle, rgba(99, 102, 241, 0.35), transparent 70%);
-  animation: floatReverse 7s ease-in-out infinite;
+  background: radial-gradient(circle, rgba(129, 140, 248, 0.1), rgba(238, 242, 255, 0.02) 60%, transparent 75%);
+  filter: blur(90px);
+  animation: floatReverse 9s ease-in-out infinite;
 }
 .orb-blue {
-  background: radial-gradient(circle, rgba(59, 130, 246, 0.3), transparent 70%);
+  background: radial-gradient(circle, rgba(96, 165, 250, 0.1), rgba(239, 246, 255, 0.02) 60%, transparent 75%);
+  filter: blur(90px);
+  animation: float 10s ease-in-out infinite;
+}
+
+/* Dark mode: vibrant cyber neon glow */
+.dark .orb-purple {
+  background: radial-gradient(circle, rgba(139, 92, 246, 0.45), transparent 70%);
+  filter: blur(80px);
+  animation: float 6s ease-in-out infinite;
+}
+.dark .orb-indigo {
+  background: radial-gradient(circle, rgba(99, 102, 241, 0.4), transparent 70%);
+  filter: blur(80px);
+  animation: floatReverse 7s ease-in-out infinite;
+}
+.dark .orb-blue {
+  background: radial-gradient(circle, rgba(59, 130, 246, 0.35), transparent 70%);
+  filter: blur(80px);
   animation: float 8s ease-in-out infinite;
 }
