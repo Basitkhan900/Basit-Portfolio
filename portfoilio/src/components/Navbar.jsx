@@ -33,20 +33,10 @@ const Navbar = () => {
       <div className="max-w-7xl mx-auto flex items-center justify-between px-6 py-4">
 
         {/* Logo */}
-        <Link to="/">
-          <h1
-            className="text-2xl font-black cursor-pointer tracking-tight select-none"
-            style={{
-              background: isDark
-                ? "linear-gradient(135deg,#a855f7,#6366f1,#60a5fa)"
-                : "linear-gradient(135deg,#7c3aed,#4f46e5,#2563eb)",
-              WebkitBackgroundClip: "text",
-              WebkitTextFillColor: "transparent",
-              backgroundClip: "text",
-            }}
-          >
+        <Link to="/" className="flex items-center">
+          <span className="text-2xl font-black cursor-pointer tracking-tight select-none gradient-text">
             Abdul Basit
-          </h1>
+          </span>
         </Link>
 
         {/* Desktop Nav */}

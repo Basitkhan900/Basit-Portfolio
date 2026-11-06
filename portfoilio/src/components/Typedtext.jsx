@@ -1,5 +1,4 @@
-import React from 'react'
-import { useEffect, useRef } from 'react'
+import React, { useEffect, useRef } from 'react'
 import Typed from 'typed.js'
 
 const Typedtext = () => {
@@ -23,10 +22,12 @@ const Typedtext = () => {
     <div>
       <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white transition-colors duration-300">
         I'm a{" "}
-        <span
-          ref={textRef}
-          className="bg-gradient-to-r from-purple-600 via-indigo-600 to-blue-600 dark:from-purple-400 dark:via-indigo-400 dark:to-blue-400 bg-clip-text text-transparent drop-shadow-sm"
-        />
+        {/*
+          Use the CSS class .gradient-text which reads from --gt-main CSS variable.
+          This variable updates atomically with the .dark class — no React state,
+          no timing race, no gradient rectangle flash on theme toggle.
+        */}
+        <span ref={textRef} className="gradient-text" />
       </h2>
     </div>
   );

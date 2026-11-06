@@ -23,6 +23,17 @@
   --footer-bg: #e2e8f0;
   --scrollbar-track: #e2e8f0;
   --scrollbar-thumb: #a855f7;
+
+  /*
+   * ── Gradient text CSS variables ──────────────────────────────────────────
+   * Controlled ONLY by CSS — no React state, no JS timing race.
+   * When .dark is added/removed on <html>, these vars update atomically
+   * in the same style-recalc pass as background-clip:text, so there is
+   * ZERO intermediate frame where the gradient rectangle is visible.
+   */
+  --gt-main:   linear-gradient(135deg, #7c3aed, #4f46e5, #2563eb);
+  --gt-purple: linear-gradient(135deg, #7c3aed, #4f46e5);
+  --gt-wide:   linear-gradient(135deg, #7c3aed, #4f46e5, #2563eb);
 }
 
 .dark {
@@ -42,11 +53,20 @@
   --footer-bg: transparent;
   --scrollbar-track: #0a0a0f;
   --scrollbar-thumb: #7c3aed;
+
+  /* Dark overrides for gradient text vars */
+  --gt-main:   linear-gradient(135deg, #a855f7, #6366f1, #60a5fa);
+  --gt-purple: linear-gradient(135deg, #a855f7, #6366f1);
+  --gt-wide:   linear-gradient(135deg, #a855f7, #6366f1, #60a5fa);
 }
 
 /* Full width + default browser margin remove */
+/* color-scheme is set dynamically via JS (ThemeContext) to match the active theme */
 html {
-  color-scheme: light dark;
+  color-scheme: dark; /* default; overridden per-class below */
+}
+html:not(.dark) {
+  color-scheme: light;
 }
 
 html, body, #root {
@@ -67,7 +87,7 @@ body {
   transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-/* Light mode soothing mesh background: warm, comfortable on the eyes, rich depth */
+/* Light mode soothing mesh background */
 html:not(.dark) body {
   background-color: #eef2f6;
   background-image:
@@ -158,18 +178,38 @@ p, span, a, li, input, textarea, button, label {
   font-family: var(--font-body);
 }
 
-/* ── Gradient text ───────────────────────────────── */
+/* ── Gradient text utilities ─────────────────────────────────────────────── */
+/*
+  Uses CSS custom properties (--gt-main, --gt-purple, --gt-wide) defined in
+  :root (light) and overridden in .dark. This means gradient + background-clip
+  update atomically in the SAME style-recalc pass when .dark is toggled —
+  no React state involved, no intermediate repaint frame, no rectangle flash.
+*/
 .gradient-text {
-  background: linear-gradient(135deg, #7c3aed, #4f46e5, #2563eb);
+  background: var(--gt-main);
   -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
   background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+  display: inline-block;
 }
-.dark .gradient-text {
-  background: linear-gradient(135deg, #a855f7, #6366f1, #60a5fa);
+
+.gradient-text-purple {
+  background: var(--gt-purple);
   -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
   background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+  display: inline-block;
+}
+
+.gradient-text-wide {
+  background: var(--gt-wide);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+  display: inline-block;
 }
 
 /* ── Glass card ──────────────────────────────────── */
@@ -187,6 +227,10 @@ p, span, a, li, input, textarea, button, label {
   pointer-events: none;
   z-index: 0;
   transition: opacity 0.5s ease;
+  /* GPU-composite the orb animations — avoids layout/paint on each frame */
+  will-change: transform;
+  transform: translateZ(0);
+  backface-visibility: hidden;
 }
 
 /* Light mode: delicate ambient hues on the soft slate background */

@@ -93,16 +93,7 @@ const Header = () => {
             className="text-5xl md:text-6xl font-black leading-tight text-slate-900 dark:text-white mb-2 transition-colors duration-300"
           >
             Hi, I'm <br />
-            <span
-              style={{
-                background: isDark
-                  ? "linear-gradient(135deg,#a855f7,#6366f1,#60a5fa)"
-                  : "linear-gradient(135deg,#7c3aed,#4f46e5,#2563eb)",
-                WebkitBackgroundClip: "text",
-                WebkitTextFillColor: "transparent",
-                backgroundClip: "text",
-              }}
-            >
+            <span className="gradient-text">
               Abdul Basit
             </span>
           </motion.h1>

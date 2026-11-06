@@ -43,16 +43,7 @@ const Carddata = ({ data }) => {
           </span>
           <h2 className="text-4xl md:text-5xl font-black text-slate-900 dark:text-white leading-tight transition-colors duration-300">
             Featured{" "}
-            <span
-              style={{
-                background: isDark
-                  ? "linear-gradient(135deg,#a855f7,#6366f1,#60a5fa)"
-                  : "linear-gradient(135deg,#7c3aed,#4f46e5,#2563eb)",
-                WebkitBackgroundClip: "text",
-                WebkitTextFillColor: "transparent",
-                backgroundClip: "text",
-              }}
-            >
+            <span className="gradient-text">
               Projects
             </span>
           </h2>

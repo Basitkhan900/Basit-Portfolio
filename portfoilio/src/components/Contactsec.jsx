@@ -4,7 +4,7 @@ import { FaEnvelope, FaPhoneAlt, FaMapMarkerAlt } from "react-icons/fa";
 import { useTheme } from "../context/ThemeContext";
 
 const contactInfo = [
-  { icon: FaEnvelope, label: "Email", value: "mohaz33555@email.com" },
+  { icon: FaEnvelope, label: "Email", value: "basitbangash8899@gmail.com" },
   { icon: FaPhoneAlt, label: "Phone", value: "+92 3368222900" },
   { icon: FaMapMarkerAlt, label: "Location", value: "Pakistan" },
 ];
@@ -44,16 +44,7 @@ const Contactsec = () => {
           </span>
           <h2 className="text-4xl md:text-5xl font-black text-slate-900 dark:text-white leading-tight transition-colors duration-300">
             Let's{" "}
-            <span
-              style={{
-                background: isDark
-                  ? "linear-gradient(135deg,#a855f7,#6366f1,#60a5fa)"
-                  : "linear-gradient(135deg,#7c3aed,#4f46e5,#2563eb)",
-                WebkitBackgroundClip: "text",
-                WebkitTextFillColor: "transparent",
-                backgroundClip: "text",
-              }}
-            >
+            <span className="gradient-text">
               Work Together
             </span>
           </h2>

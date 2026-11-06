@@ -46,15 +46,7 @@ const Footer = () => {
         {/* Brand */}
         <div>
           <h2
-            className="text-2xl font-black mb-4 tracking-tight"
-            style={{
-              background: isDark
-                ? "linear-gradient(135deg,#a855f7,#6366f1,#60a5fa)"
-                : "linear-gradient(135deg,#7c3aed,#4f46e5,#2563eb)",
-              WebkitBackgroundClip: "text",
-              WebkitTextFillColor: "transparent",
-              backgroundClip: "text",
-            }}
+            className="text-2xl font-black mb-4 tracking-tight gradient-text"
           >
             Abdul Basit
           </h2>
